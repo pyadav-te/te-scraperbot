@@ -55,4 +55,5 @@ def APIEnterpriseAgents(username, token, aid, fileName):
                 agentData[field]="NULL"
         agentobjectlist.append(agentData)
     # WRITE TO CSV
-    return generateCSV(fileName, agentobjectlist)
+    generateCSV(fileName, agentobjectlist)
+    return

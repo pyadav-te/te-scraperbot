@@ -58,5 +58,6 @@ def APIAccountGroups(username, token, fileName):
         agobjectlist.append(agData)
 
     # WRITE TO CSV
-    return generateCSV(fileName, agobjectlist)
+    generateCSV(fileName, agobjectlist)
+    return
 

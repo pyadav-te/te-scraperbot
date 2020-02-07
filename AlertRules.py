@@ -67,4 +67,5 @@ def APIAlertRules(username, token, aid, fileName):
         rulesobjectlist.append(rulesData)
 
     # WRITE TO CSV
-    return generateCSV(fileName, rulesobjectlist)
+    generateCSV(fileName, rulesobjectlist)
+    return

@@ -5,8 +5,9 @@ from AlertRules import APIAlertRules
 from UnitCalculator import APIUnitCalculator
 from AccountGroups import APIAccountGroups
 from EnterpriseAgents import APIEnterpriseAgents
-from usersRepo import getAll, save
-from datetime import date
+from AgentIPList import APIAgentIPList
+from auditRepo import getAll, save
+import datetime
 import json
 import time
 
@@ -31,19 +32,29 @@ def result():
         token = request.form.get('auth')
         aid = request.form.get('aid')
         report =  request.form.get('report')
-        fileName = ''.join(report + '_' + str(aid) + '_' + str(time.time()))
-        save(username,report,date.today(),fileName)
-        if report == 'Tests':
-            return APITests(username, token, aid, fileName)
-        elif report == 'AlertRules':
-            return APIAlertRules(username, token, aid, fileName)
-        elif report == 'Usage':
-            return APIUnitCalculator(username, token, aid, fileName)
-        elif report == 'AccountGroups':
-            return APIAccountGroups(username, token, fileName)
-        elif report == 'EnterpriseAgents':
-            return APIEnterpriseAgents(username, token, aid, fileName)
 
+        now = str(time.time())
+
+        fileName = ''.join(report + '_' + str(aid) + '_' + now)
+        if report == 'Tests':
+            APITests(username, token, aid, fileName)
+        elif report == 'AlertRules':
+            APIAlertRules(username, token, aid, fileName)
+        elif report == 'Usage':
+            APIUnitCalculator(username, token, aid, fileName)
+        elif report == 'AccountGroups':
+            APIAccountGroups(username, token, fileName)
+        elif report == 'EnterpriseAgents':
+            APIEnterpriseAgents(username, token, aid, fileName)
+        elif report == 'AgentList':
+            APIAgentIPList(username, token, aid, fileName)
+        elif report == 'AgentIPList':
+            APIAgentIPList(username, token, aid, fileName)
+
+        save(username, report, str(datetime.datetime.now()), fileName)
+
+        return send_from_directory('reports',
+                                   fileName+ '.csv', as_attachment=True)
 @app.route('/reportlist')
 def reportlist():
     users = getAll()
