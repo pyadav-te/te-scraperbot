@@ -45,7 +45,9 @@ def APIEnterpriseAgents(username, token, aid, fileName):
             'utilization',
             'targetForTests',
             'enabled',
-            'agentType'
+            'agentType',
+            'prefix',
+            'network'
         ]
 
         for field in agentFields:

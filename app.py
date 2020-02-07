@@ -40,14 +40,12 @@ def result():
             APITests(username, token, aid, fileName)
         elif report == 'AlertRules':
             APIAlertRules(username, token, aid, fileName)
-        elif report == 'Usage':
+        elif report == 'TestUsage':
             APIUnitCalculator(username, token, aid, fileName)
         elif report == 'AccountGroups':
             APIAccountGroups(username, token, fileName)
         elif report == 'EnterpriseAgents':
             APIEnterpriseAgents(username, token, aid, fileName)
-        elif report == 'AgentList':
-            APIAgentIPList(username, token, aid, fileName)
         elif report == 'AgentIPList':
             APIAgentIPList(username, token, aid, fileName)
 

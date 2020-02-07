@@ -4,7 +4,6 @@
   <table class="table">
     <thead>
     <tr>
-      <th scope="col"> Report ID</th>
       <th scope="col"> Created By</th>
       <th scope="col"> Report Type</th>
       <th scope="col"> Query Date</th>
@@ -14,7 +13,6 @@
     <tbody>
   {% for report in reportlist %}
   <tr>
-<th scope="row">{{report.report_id}}</th>
 <td>{{report.created_by}}</td>
 <td>{{report.report_name}}</td>
 <td>{{report.query_date}}</td>

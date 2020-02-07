@@ -11,7 +11,7 @@ def getAll():
     con = sql.connect("audit.db")
     con.row_factory = sql.Row
     cur = con.cursor()
-    cur.execute("select * from audit")
+    cur.execute("select * from audit ORDER BY report_id DESC ")
     users = cur.fetchall()
     return users
 
